@@ -1,0 +1,21 @@
+--- a/openjdk/hotspot/make/linux/makefiles/gcc.make	2016-05-08 20:42:20.802717979 +0200
++++ b/openjdk/hotspot/make/linux/makefiles/gcc.make	2016-05-08 20:46:22.237697012 +0200
+@@ -149,6 +149,7 @@
+ CFLAGS += -fno-rtti
+ CFLAGS += -fno-exceptions
+ CFLAGS += -D_REENTRANT
++CFLAGS += -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse
+ ifeq ($(USE_CLANG),)
+   CFLAGS += -fcheck-new
+   # version 4 and above support fvisibility=hidden (matches jni_x86.h file)
+--- a/openjdk/make/common/NativeCompilation.gmk 2016-05-08 21:31:41.093460890 +0200
++++ b/openjdk/make/common/NativeCompilation.gmk	2016-05-08 21:32:06.597458675 +0200
+@@ -70,7 +70,7 @@
+     $1_$2_DEP_FLAG:=
+   else
+     # Compile as a C++ file
+-    $1_$2_FLAGS=$6 $$($1_$(notdir $2)_CXXFLAGS) -DTHIS_FILE='"$$(<F)"' -c
++    $1_$2_FLAGS=$6 $$($1_$(notdir $2)_CXXFLAGS) -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse -DTHIS_FILE='"$$(<F)"' -c
+     $1_$2_COMP=$7
+     $1_$2_DEP_FLAG:=$(CXX_FLAG_DEPS)
+   endif
