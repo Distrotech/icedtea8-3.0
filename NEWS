@@ -10,6 +10,8 @@ LPX - https://bugs.launchpad.net/bugs/X
 
 CVE-XXXX-YYYY: http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=XXXX-YYYY
 
+New in release 3.0.2 (201X-XX-XX):
+
 New in release 3.0.1 (2016-04-23):
 
 * Security fixes
@@ -61,7 +63,7 @@ New in release 3.0.1 (2016-04-23):
   - S8154413: AArch64: Better byte behaviour
 * Bug fixes
   - PR2933: Support ccache 3.2 and later
-  - PR2934: SunEC provider throwing KeyException with current NSS
+  - PR2934, G579676: SunEC provider throwing KeyException with current NSS
 
 New in release 3.0.0 (2016-04-08):
 
