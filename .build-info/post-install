@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -d ${3} ]  && [ "${3}" != "/" ];then
+  rm -rf ${3}
+fi;
+
 mkdir -p ${3}/usr/${B_LIBDIRS}/jvm/
 
 rsync -avP openjdk.build/images/j2re-image/ ${3}/usr/${B_LIBDIRS}/jvm/jre-${JAVA8_VER}/

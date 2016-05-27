@@ -1,0 +1,4 @@
+#!/bin/bash
+
+unset CC CXX HOST_CC
+make ${MAKE_J}

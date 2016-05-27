@@ -6,6 +6,7 @@ if [ ! -d ../.build-info/src/${1} ];then
   /bin/cp ../.build-info/src/${1}/* ./
 fi;
 
+unset CC CXX HOST_CC
 make patch
 
 cp *.tar.* ../.build-info/src/${1}/
@@ -14,5 +15,5 @@ for dpatch in gcc6;do
   echo "Applying distrotech ${dpatch} patch"
   patch -p1 -N -s -r - -i ../.build-info/distrotech-icedtea8-${dpatch}.patch
 done
-
+make icedtea-boot-configure
 mkdir -p bootstrap/boot/jre/lib
